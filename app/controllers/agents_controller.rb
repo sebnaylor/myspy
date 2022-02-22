@@ -5,12 +5,13 @@ class AgentsController < ApplicationController
 
   def create
     @agent = Agent.new(agent_params)
-    # @agent.owner = current_user
-    if @agent.save
+    @agent.user = current_user
+    # if @agent.save
+      @agent.save
       redirect_to agent_path(@agent)
-    else
-      render :new
-    end
+    # else
+    #   render :new
+    # end
   end
 
   def index
