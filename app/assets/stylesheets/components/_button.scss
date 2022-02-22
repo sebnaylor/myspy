@@ -1,0 +1,13 @@
+.btn-main {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  background-color: #DC1262;
+}
+
+.btn-main:hover {
+  opacity: 0.8;
+  color: white;
+}
