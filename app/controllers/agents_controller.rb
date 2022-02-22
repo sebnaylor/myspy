@@ -4,7 +4,8 @@ class AgentsController < ApplicationController
   end
 
   def create
-    @agent = Agent.new(list_params)
+    @agent = Agent.new(agent_params)
+    # @agent.owner = current_user
     if @agent.save
       redirect_to agent_path(@agent)
     else
@@ -25,7 +26,7 @@ class AgentsController < ApplicationController
 
   private
 
-  def list_params
+  def agent_params
     params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status)
   end
 
