@@ -9,6 +9,10 @@ class AgentsController < ApplicationController
     render :new
   end
 
+  def index
+    @agents = Agent.all
+  end
+
   private
 
   def list_params
