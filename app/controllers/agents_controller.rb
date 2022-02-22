@@ -6,7 +6,7 @@ class AgentsController < ApplicationController
   def create
     @agent = Agent.new(list_params)
     if @agent.save
-      redirect_to agents_path
+      redirect_to agent_path(@agent)
     else
       render :new
     end
