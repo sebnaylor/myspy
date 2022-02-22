@@ -17,7 +17,7 @@ class AgentsController < ApplicationController
     # As a visitor I can view the agent's details, reviews including skill, dates available, bio, image and price
     @agent = Agent.find(params[:id])
     # returns a boolean based on whether the signed in user owns the agent
-    @owner = params[:user_id] == current_user
+    @owner = params[:user_id] == current_user.id
   end
 
   private
