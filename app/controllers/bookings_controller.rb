@@ -14,4 +14,6 @@ class BookingsController < ApplicationController
   def show
   end
 
+  # private
+  # insert hard params
 end
