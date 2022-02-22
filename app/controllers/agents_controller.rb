@@ -19,7 +19,7 @@ class AgentsController < ApplicationController
   private
 
   def list_params
-    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets)
+    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status)
   end
 
 end
