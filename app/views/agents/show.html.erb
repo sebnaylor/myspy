@@ -1,15 +1,26 @@
-<h1><%=@agent.name%>'s stats</h1>
-<h2><%= @agent.image %></h2>
-<h2>Name: <%= @agent.name %></h2>
-<h2>Price: £<%= @agent.price %></h2>
-<h2>Height: <%= @agent.height %>cm</h2>
-<h2>Service: <%= @agent.years_of_service%> years</h2>
-<h2>Weapons: <%= @agent.weapon %></h2>
-<h2>Ineptitude: <%= @agent.ineptitude %></h2>
-<h2>Evilness: <%= @agent.evilness %></h2>
-<h2>Category: <%= @agent.category %></h2>
-<h2>Skills: <%= @agent.skills %></h2>
-<h2>Gadgets: <%= @agent.gadgets %></h2>
-<h2>Owner: <%= @agent.user.name %></h2>
+<div class = "container">
+<div class = "agent-title"><h1><%=@agent.name%></h1>
+<p><%= @agent.category %></p>
+<p><em><%= @agent.marital_status %></em></p></div>
+<%= image_tag("https://www.denofgeek.com/wp-content/uploads/2015/08/best_secret_agents_movies.jpg", class: "show-page-image") %>
+<div class = "agent-show-page-container-3c">
 
-<h2>Marital Status: <%= @agent.name %></h2>
+  <div class = "agent-show-page-container-box-3c"><h2>£<%= @agent.price %></h2></div>
+  <div class = "agent-show-page-container-box-3c"><h2><%= @agent.height %>cm</h2></div>
+  <div class = "agent-show-page-container-box-3c"><h2>Service<br> <%= @agent.years_of_service%> years</h2></div>
+</div>
+
+<div class = "agent-show-page-container-2c">
+<div class = "agent-show-page-container-box-2c"><h2>Ineptitude <br><%= @agent.ineptitude %>/10</h2></div>
+<div class = "agent-show-page-container-box-2c"><h2>Evilness <br><%= @agent.evilness %>/10</h2></div>
+</div>
+
+<div class = "agent-show-page-container-3c">
+<div class = "agent-show-page-container-box-3c"><h2>Weapons</h2><br><p> <%= @agent.weapon %></p></div>
+<div class = "agent-show-page-container-box-3c"><h2>Skills<br> <%= @agent.skills %></h2></div>
+<div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
+</div>
+<%# when we can create an agent, test Owner: <%= @agent.user.name %>
+
+
+</div>
