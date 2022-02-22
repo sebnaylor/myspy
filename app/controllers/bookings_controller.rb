@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def index
+    @bookings = Booking.all
   end
 
   def update
@@ -14,4 +15,6 @@ class BookingsController < ApplicationController
   def show
   end
 
+  # private
+  # insert hard params
 end
