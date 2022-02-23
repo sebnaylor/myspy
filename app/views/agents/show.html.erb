@@ -2,7 +2,31 @@
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
 <p><em><%= @agent.marital_status %></em></p></div>
-<%= image_tag("https://www.denofgeek.com/wp-content/uploads/2015/08/best_secret_agents_movies.jpg", class: "show-page-image") %>
+<%= cl_image_tag @agent.photo.key, crop: :fill %>
+<%# when we can create an agent, test Owner: <%= @agent.user.name %>
+<%# if owner and end can be removed to test functionality without the need to be the agent owner %>
+<%if @owner%>
+<div class = "agent-show-page-container-2c side-padding">
+<%= link_to edit_agent_path(@agent) do%>
+  <div class = "agent-show-page-container-box-2c edit-button btn-main">
+  <h2>Edit</h2>
+  </div>
+  <% end %>
+<%= link_to agent_path(@agent), method: :delete, data: { confirm: "Our agent killers will be dispatched, are you sure?" } do%>
+  <div class = "agent-show-page-container-box-2c delete-button btn-main">
+  <h2>Delete</h2>
+  </div>
+  <% end %>
+</div>
+  <% else %>
+  <%= link_to "/bookings" do%>
+  <div class = "agent-show-page-container-box-3c booking-button btn-main side-padding-deluxe">
+    <h2>Book <%=@agent.name%></h2>
+  </div>
+  <% end %>
+<% end %>
+
+
 <div class = "agent-show-page-container-3c">
 
   <div class = "agent-show-page-container-box-3c"><h2>£<%= @agent.price %></h2></div>
@@ -20,8 +44,3 @@
 <div class = "agent-show-page-container-box-3c"><h2>Skills<br> <%= @agent.skills %></h2></div>
 <div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
 </div>
-<%# when we can create an agent, test Owner: <%= @agent.user.name %>
-<%if @owner%>
-<%= link_to "Edit", edit_agent_path(@agent)%>
-<p> ADD DELETE BUTTON </p>
-<% end %>

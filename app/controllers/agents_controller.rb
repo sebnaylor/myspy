@@ -46,10 +46,15 @@ class AgentsController < ApplicationController
     end
   end
 
+  def destroy
+    @agent = Agent.find(params[:id])
+    @agent.destroy
+    redirect_to agents_path
+  end
   private
 
   def agent_params
-    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status)
+    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status, :photo)
   end
 
 end

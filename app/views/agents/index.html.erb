@@ -4,21 +4,20 @@
  <%= button_to "Create New Agent", new_agent_path, :method => "get", class: "btn btn-main" %>
 <br>
 <br>
-
 <div class="d-flex">
   <div class="cards">
     <% @agents.each do |agent| %>
       <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
         <div class="card-agent">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% if agent.photo.attached? %>
+            <%= cl_image_tag agent.photo.key, crop: :fill %>
+          <% end %>
           <div class="card-agent-infos">
             <div>
               <h2><%= agent.name %></h2>
               <p><%= agent.category %></p>
             </div>
-            <h2 class="card-agent-pricing">£<%= agent.price %></h2>
           </div>
-        </div>
       <% end %>
     <% end %>
   </div>
