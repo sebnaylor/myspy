@@ -1,7 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
       <div class="logo-and-name d-flex justify-content-between">
-      <%= image_tag "/assets/logo.png", class: "logo" %>
+      <%= link_to root_path do %>
+      <%= image_tag "/assets/logo.png", class: "logo"%>
+      <%end%>
       <h2>MySpy</h2>
       </div>
 
@@ -11,9 +13,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
-          <li class="nav-item active">
+          <%# <li class="nav-item active">
             <%= link_to "Home", "#{root_path}", class: "nav-link" %>
-          </li>
+          <%# </li> %>
           <li class="nav-item active">
             <%= link_to "Search", "#", class: "nav-link" %>
           </li>
@@ -31,6 +33,14 @@
               <%= link_to "Log in", "#{new_user_session_path}", class: "nav-link" %>
             <% end %>
           </li>
+
+          <li class="nav-item">
+            <% if user_signed_in? %>
+              <%= image_tag "/assets/agent_avatar.jpg", class: "logo" %>
+            <% else %>
+              <%= image_tag "/assets/X.png", class: "logo" %>
+            <% end %>
+            </li>
 
             <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         <%# else %>
