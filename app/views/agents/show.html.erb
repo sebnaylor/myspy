@@ -2,7 +2,6 @@
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
 <p><em><%= @agent.marital_status %></em></p></div>
-
 <% if @agent.photo.attached? %>
   <%= cl_image_tag @agent.photo.key %>
 <% else %>
