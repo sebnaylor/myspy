@@ -1,3 +1,15 @@
+a:link {
+  text-decoration: none;
+}
+
+.side-padding{
+  padding: 0px 100px;
+}
+
+.side-padding-deluxe{
+  padding: 0px 300px;
+}
+
 .show-page-image{
   width: 100%;
   height:auto;
@@ -33,7 +45,39 @@
   box-shadow: 5px 10px rgb(228, 228, 228);
   text-align: center;
   padding: 30px 0px;
+}
 
+.edit-button{
+  transition: 0.4s;
+  color: white;
+  background-color: rgb(68, 155, 112);
+  text-decoration: none;
+}
+
+.booking-button{
+  transition: 0.4s;
+  color: white;
+  background-color: rgb(76, 87, 187);
+  text-decoration: none;
+}
+
+.edit-button:hover{
+  opacity: 0.8;
+  color: white;
+  transition: 0.4s;
+}
+
+.delete-button{
+  transition: 0.4s;
+  background-color: rgb(182, 30, 30);
+  color: white;
+  text-decoration: none;
+}
+
+.delete-button:hover{
+  opacity: 0.8;
+  color: white;
+  transition: 0.4s;
 }
 
 .agent-title{
