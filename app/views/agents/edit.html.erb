@@ -1,0 +1,20 @@
+
+<h1>Edit <%=@agent.name %></h1>
+<br>
+<div class="form-container container" >
+<%= simple_form_for @agent do |f| %>
+<%= f.input :name %>
+<%= f.input :price %>
+<%= f.input :height %>
+<%= f.input :years_of_service %>
+<%= f.input :weapon %>
+<%= f.input :marital_status %>
+<%= f.input :ineptitude %>
+<%= f.input :evilness %>
+<%= f.input :category %>
+<%= f.input :skills %>
+<%= f.input :gadgets %>
+<br>
+<%= f.submit %>
+<% end %>
+</div >
