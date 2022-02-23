@@ -3,7 +3,11 @@
 <p><%= @agent.category %></p>
 <p><em><%= @agent.marital_status %></em></p></div>
 
-<%= cl_image_tag @agent.photo.key %>
+<% if @agent.photo.attached? %>
+  <%= cl_image_tag @agent.photo.key %>
+<% else %>
+  <%= image_tag "/assets/agent_avatar.jpeg" %>
+<% end %>
 <%# when we can create an agent, test Owner: <%= @agent.user.name %>
 <%# if owner and end can be removed to test functionality without the need to be the agent owner %>
 <br>
