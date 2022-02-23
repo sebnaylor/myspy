@@ -15,6 +15,15 @@ class AgentsController < ApplicationController
 
   def index
     @agents = Agent.all
+
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @agents.geocoded.map do |agent|
+      {
+        lat: agent.latitude,
+        lng: agent.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { agent: agent })
+      }
+    end
   end
 
   def show
@@ -45,7 +54,7 @@ class AgentsController < ApplicationController
   private
 
   def agent_params
-    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status, :photo)
+    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status, :location, :longitude, :latitude, :photo)
   end
 
 end
