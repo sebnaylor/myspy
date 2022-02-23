@@ -6,7 +6,10 @@
 <%= cl_image_tag @agent.photo.key %>
 <%# when we can create an agent, test Owner: <%= @agent.user.name %>
 <%# if owner and end can be removed to test functionality without the need to be the agent owner %>
+<br>
 <%if @owner%>
+<br>
+<br>
 <div class = "agent-show-page-container-2c side-padding">
 <%= link_to edit_agent_path(@agent) do%>
   <div class = "agent-show-page-container-box-2c edit-button btn-main">
