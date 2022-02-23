@@ -6,7 +6,7 @@
 <% if @agent.photo.attached? %>
   <div class = "image-show-page"><%= cl_image_tag @agent.photo.key %></div>
 <% else %>
-  <div class = "image-show-page"><%= image_tag "/assets/agent_avatar.jpeg" %></div>
+  <%= image_tag "/assets/default_agent.png" %>
 <% end %>
 <%# when we can create an agent, test Owner: <%= @agent.user.name %>
 <%# if owner and end can be removed to test functionality without the need to be the agent owner %>
