@@ -12,7 +12,7 @@
           <% if agent.photo.attached? %>
             <%= cl_image_tag agent.photo.key, crop: :fill %>
            <% else %>
-          <%= image_tag "/assets/agent_avatar.jpeg" %>
+            <%= image_tag "/assets/agent_avatar.jpeg" %>
           <% end %>
           <div class="card-agent-infos">
             <div>
