@@ -2,7 +2,7 @@
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
 <p><em><%= @agent.marital_status %></em></p></div>
-<%= cl_image_tag @agent.photo.key, crop: :fill,object_fit: :contain %>
+<%= cl_image_tag @agent.photo.key %>
 <div class = "agent-show-page-container-3c">
 
   <div class = "agent-show-page-container-box-3c"><h2>£<%= @agent.price %></h2></div>
