@@ -6,12 +6,11 @@ class AgentsController < ApplicationController
   def create
     @agent = Agent.new(agent_params)
     @agent.user = current_user
-    # if @agent.save
-      @agent.save
+    if @agent.save
       redirect_to agent_path(@agent)
-    # else
-    #   render :new
-    # end
+    else
+      render :new
+    end
   end
 
   def index
@@ -22,7 +21,20 @@ class AgentsController < ApplicationController
     # As a visitor I can view the agent's details, reviews including skill, dates available, bio, image and price
     @agent = Agent.find(params[:id])
     # returns a boolean based on whether the signed in user owns the agent
-    @owner = params[:user_id] == current_user.id
+    @owner = @agent[:user_id] == current_user.id
+  end
+
+  def edit
+    @agent = Agent.find(params[:id])
+  end
+
+  def update
+    @agent = Agent.find(params[:id])
+    if @agent.update(agent_params)
+      redirect_to agent_path(@agent)
+    else
+      render :new
+    end
   end
 
   private

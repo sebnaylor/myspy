@@ -21,6 +21,7 @@
 <div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
 </div>
 <%# when we can create an agent, test Owner: <%= @agent.user.name %>
-
-
-</div>
+<%if @owner%>
+<%= link_to "Edit", edit_agent_path(@agent)%>
+<p> ADD DELETE BUTTON </p>
+<% end %>
