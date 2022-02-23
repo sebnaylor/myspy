@@ -1,29 +1,35 @@
-
-<h2 class="text-center pt-4">Connecting secret agents with the people that need them</h1>
-
-<div class="d-flex flex-wrap justify-content-between pt-4">
-  <% @agents.each do |agent| %>
-      <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
-        <div class="card-agent">
-        <% if agent.photo.attached? %>
-          <%= cl_image_tag agent.photo.key %>
-        <% else %>
-          <%= image_tag "/assets/default_agent.png" %>
-        <% end%>
-          <div class="card-agent-infos">
-            <div>
-              <h2><%= agent.name %></h2>
-              <p><%= agent.category %></p>
-            </div>
-            <h2 class="card-agent-pricing">£<%= agent.price %></h2>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/4035566/pexels-photo-4035566.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);">
+  <div class="container">
+    <h1>Connecting secret agents with the people that need them</h1>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
 </div>
 
-<div class="container text-center pt-4">
-  <h2 class="py-4">Like what you see? Find out more</h2>
+<div class="container">
+  <div class="d-flex flex-wrap justify-content-between pt-4">
+    <% @agents.each do |agent| %>
+        <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
+          <div class="card-agent">
+          <% if agent.photo.attached? %>
+            <%= cl_image_tag agent.photo.key %>
+          <% else %>
+            <%= image_tag "/assets/default_agent.png" %>
+          <% end%>
+            <div class="card-agent-infos">
+              <div>
+                <h2><%= agent.name %></h2>
+                <p><%= agent.category %></p>
+              </div>
+              <h2 class="card-agent-pricing">£<%= agent.price %></h2>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
 
-  <%= link_to "Discover", "#{agents_path}", class: "btn btn-main" %>
+  <div class="container text-center pt-4">
+    <h2 class="py-4">Like what you see? Find out more</h2>
+
+    <%= link_to "Discover", "#{agents_path}", class: "btn btn-main" %>
+  </div>
 </div>
