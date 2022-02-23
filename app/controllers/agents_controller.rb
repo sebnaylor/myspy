@@ -54,7 +54,7 @@ class AgentsController < ApplicationController
   private
 
   def agent_params
-    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status, :photo)
+    params.require(:agent).permit(:name, :price, :skills, :category, :height, :years_of_service, :weapon, :evilness, :ineptitude, :gadgets, :marital_status, :location, :longitude, :latitude, :photo)
   end
 
 end
