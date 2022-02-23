@@ -1,7 +1,7 @@
 <div class = "container">
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
-<p><em><strong><%= @agent.marital_status.upcase %><strong></em></p></div>
+<p><em><strong><%= @agent.marital_status %><strong></em></p></div>
 
 <% if @agent.photo.attached? %>
   <div class = "image-show-page"><%= cl_image_tag @agent.photo.key %></div>
