@@ -21,7 +21,8 @@
 <div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
 </div>
 <%# when we can create an agent, test Owner: <%= @agent.user.name %>
+<%# if owner and end can be removed to test functionality without the need to be the agent owner %>
 <%if @owner%>
 <%= link_to "Edit", edit_agent_path(@agent)%>
-<p> ADD DELETE BUTTON </p>
+<%= link_to "Delete",  agent_path(@agent), method: :delete, data: { confirm: "Our agent killers will be dispatched, are you sure?" } %>
 <% end %>
