@@ -5,7 +5,6 @@ ruby '3.0.3'
 
 gem "geocoder"
 gem 'cloudinary', '~> 1.16.0'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

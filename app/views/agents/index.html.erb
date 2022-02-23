@@ -14,7 +14,7 @@
             <% if agent.photo.attached? %>
               <%= cl_image_tag agent.photo.key, crop: :fill %>
             <% else %>
-            <%= image_tag "/assets/agent_avatar.jpeg" %>
+            <%= image_tag "/assets/default_agent.png" %>
             <% end %>
             <div class="card-agent-infos">
               <div>
@@ -34,5 +34,4 @@
       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-
 </div>
