@@ -6,12 +6,11 @@ class AgentsController < ApplicationController
   def create
     @agent = Agent.new(agent_params)
     @agent.user = current_user
-    # if @agent.save
-      @agent.save
+    if @agent.save
       redirect_to agent_path(@agent)
-    # else
-    #   render :new
-    # end
+    else
+      render :new
+    end
   end
 
   def index
