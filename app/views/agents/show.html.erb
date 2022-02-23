@@ -2,11 +2,17 @@
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
 <p><em><%= @agent.marital_status %></em></p></div>
-<%# <%= cl_image_tag @agent.photo.key, crop: :fill %>
-<div class = "image-show-page"> <%= image_tag "Bond.jpeg" %></div>
+<% if @agent.photo.attached? %>
+  <%= cl_image_tag @agent.photo.key %>
+<% else %>
+  <%= image_tag "/assets/agent_avatar.jpeg" %>
+<% end %>
 <%# when we can create an agent, test Owner: <%= @agent.user.name %>
 <%# if owner and end can be removed to test functionality without the need to be the agent owner %>
+<br>
 <%if @owner%>
+<br>
+<br>
 <div class = "agent-show-page-container-2c side-padding">
 <%= link_to edit_agent_path(@agent) do%>
   <div class = "agent-show-page-container-box-2c edit-button btn-main">
@@ -26,6 +32,7 @@
   </div>
   <% end %>
 <% end %>
+
 
 
 <div class = "agent-show-page-container-3c">
