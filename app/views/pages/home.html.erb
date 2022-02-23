@@ -5,7 +5,9 @@
   <% @agents.each do |agent| %>
       <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
         <div class="card-agent">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <% if agent.photo.attached? %>
+          <%= cl_image_tag agent.photo.key%>
+        <% end%>
           <div class="card-agent-infos">
             <div>
               <h2><%= agent.name %></h2>
