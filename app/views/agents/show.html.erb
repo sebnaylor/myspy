@@ -1,7 +1,7 @@
 <div class = "container">
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
-<p><em><strong><%= @agent.marital_status.upcase %><strong></em></p></div>
+<p><em><strong><%= @agent.marital_status %><strong></em></p></div>
 
 <% if @agent.photo.attached? %>
   <%= cl_image_tag @agent.photo.key %>
@@ -44,12 +44,12 @@
 </div>
 
 <div class = "agent-show-page-container-2c">
-<div class = "agent-show-page-container-box-2c"><h2>Ineptitude <br><%= @agent.ineptitude %>/10</h2></div>
-<div class = "agent-show-page-container-box-2c"><h2>Evilness <br><%= @agent.evilness %>/10</h2></div>
+  <div class = "agent-show-page-container-box-2c"><h2>Ineptitude <br><%= @agent.ineptitude %>/10</h2></div>
+  <div class = "agent-show-page-container-box-2c"><h2>Evilness <br><%= @agent.evilness %>/10</h2></div>
 </div>
 
 <div class = "agent-show-page-container-3c">
-<div class = "agent-show-page-container-box-3c"><h2>Weapons</h2><br><p> <%= @agent.weapon %></p></div>
-<div class = "agent-show-page-container-box-3c"><h2>Skills<br> <%= @agent.skills %></h2></div>
-<div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
+  <div class = "agent-show-page-container-box-3c"><h2>Weapons</h2><br><p> <%= @agent.weapon %></p></div>
+  <div class = "agent-show-page-container-box-3c"><h2>Skills<br> <%= @agent.skills %></h2></div>
+  <div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
 </div>
