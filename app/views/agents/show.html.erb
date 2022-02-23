@@ -4,7 +4,7 @@
 <p><em><strong><%= @agent.marital_status %><strong></em></p></div>
 
 <% if @agent.photo.attached? %>
-  <%= cl_image_tag @agent.photo.key %>
+  <div class = "image-show-page"><%= cl_image_tag @agent.photo.key %></div>
 <% else %>
   <%= image_tag "/assets/default_agent.png" %>
 <% end %>
@@ -12,32 +12,31 @@
 <%# if owner and end can be removed to test functionality without the need to be the agent owner %>
 <br>
 <%if @owner%>
-<br>
-<br>
-<div class = "agent-show-page-container-2c side-padding">
-<%= link_to edit_agent_path(@agent) do%>
-  <div class = "agent-show-page-container-box-2c edit-button btn-main">
-  <h2>Edit</h2>
+  <br>
+  <br>
+  <div class = "agent-show-page-container-2c side-padding">
+    <%= link_to edit_agent_path(@agent) do%>
+      <div class = "agent-show-page-container-box-2c edit-button btn-main">
+        <h2>Edit</h2>
+      </div>
+    <% end %>
+    <%= link_to agent_path(@agent), method: :delete, data: { confirm: "Our agent killers will be dispatched, are you sure?" } do%>
+      <div class = "agent-show-page-container-box-2c delete-button btn-main">
+        <h2>Delete</h2>
+      </div>
+    <% end %>
   </div>
-  <% end %>
-<%= link_to agent_path(@agent), method: :delete, data: { confirm: "Our agent killers will be dispatched, are you sure?" } do%>
-  <div class = "agent-show-page-container-box-2c delete-button btn-main">
-  <h2>Delete</h2>
-  </div>
-  <% end %>
-</div>
-  <% else %>
-  <%= link_to "/bookings" do%>
-  <div class = "agent-show-page-container-box-3c booking-button btn-main side-padding-deluxe">
-    <h2>Book <%=@agent.name%></h2>
-  </div>
-  <% end %>
+    <% else %>
+    <%= link_to "/bookings" do%>
+      <div class = "agent-show-page-container-box-3c booking-button btn-main side-padding-deluxe">
+        <h2>Book <%=@agent.name%></h2>
+      </div>
+    <% end %>
 <% end %>
 
 
 
 <div class = "agent-show-page-container-3c">
-
   <div class = "agent-show-page-container-box-3c"><h2>£<%= @agent.price %></h2></div>
   <div class = "agent-show-page-container-box-3c"><h2><%= @agent.height %>cm</h2></div>
   <div class = "agent-show-page-container-box-3c"><h2>Service<br> <%= @agent.years_of_service%> years</h2></div>
@@ -49,7 +48,7 @@
 </div>
 
 <div class = "agent-show-page-container-3c">
-  <div class = "agent-show-page-container-box-3c"><h2>Weapons</h2><br><p> <%= @agent.weapon %></p></div>
+  <div class = "agent-show-page-container-box-3c"><h2>Weapons<br> <%= @agent.weapon %></h2></div>
   <div class = "agent-show-page-container-box-3c"><h2>Skills<br> <%= @agent.skills %></h2></div>
   <div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
 </div>
