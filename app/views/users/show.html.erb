@@ -14,7 +14,27 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <%# create list of owned agents here %>
+  <div class="d-flex">
+    <div class="cards">
+      <% @owned_agents.each do |agent| %>
+        <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
+          <div class="card-agent">
+            <% if agent.photo.attached? %>
+              <%= cl_image_tag agent.photo.key, crop: :fill %>
+            <% else %>
+            <%= image_tag "/assets/default_agent.png" %>
+            <% end %>
+            <div class="card-agent-infos">
+              <div>
+                <h2><%= agent.name %></h2>
+                <p><%= agent.category %></p>
+              </div>
+                <h2 class="card-agent-pricing">£<%= agent.price %></h2>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   <%# create list of booked agents here %>
