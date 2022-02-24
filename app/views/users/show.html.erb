@@ -42,6 +42,7 @@
 
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   <%# create list of booked agents here%>
+  <%unless @bookings == []%>
   <table>
     <tr>
       <th>Agent name</th>
@@ -51,6 +52,7 @@
       <th>End date</th>
       <th>Owner</th>
     </tr>
+    <% end %>
 
     <% @bookings.each do |booking| %>
         <tr>
@@ -74,6 +76,7 @@
 
 
   <table>
+  <%unless @agent_bookings == []%>
   <tr>
     <th>Agent name</th>
     <th>Price per day</th>
@@ -83,6 +86,7 @@
     <th>Assignor</th>
     <th>Delete?</th>
   </tr>
+  <% end %>
   <% @agent_bookings.each do |booking| %>
       <tr>
     <td><%=booking.agent.name %></td>
