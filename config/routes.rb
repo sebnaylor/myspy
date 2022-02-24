@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :agents, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:index]
+  resources :bookings, only: [:index, :destroy]
   resources :users, only: [:show]
-  get "/dashboard/:id", to: 'users#show'
+
+  get "/dashboard/:id", to: 'users#show', as: :dashboard
 end

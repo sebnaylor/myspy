@@ -25,7 +25,12 @@
             <%= link_to "Agents", agents_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Bookings", "#{bookings_path}", class: "nav-link" %>
+          <% if user_signed_in? %>
+            <%= link_to "#{current_user.name}'s dashboard", dashboard_path(current_user), class: "nav-link" %>
+
+          <% else %>
+           <%= link_to "Dashboard", new_user_registration_path, class: "nav-link" %>
+           <%end%>
           </li>
 
           <li class="nav-item">
@@ -38,11 +43,15 @@
 
           <li class="nav-item">
             <% if user_signed_in? %>
-              <%= image_tag "/assets/agent_avatar.jpg", class: "logo" %>
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "logo avatar", alt: "avatar" %>
+              <% else %>
+                <%= image_tag "/assets/agent_avatar.jpg", class: "logo", alt: "avatar" %>
+              <% end %>
             <% else %>
-              <%= image_tag "/assets/X.png", class: "logo" %>
+              <%= image_tag "/assets/X.png", class: "logo", alt: "avatar" %>
             <% end %>
-            </li>
+          </li>
 
             <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         <%# else %>
