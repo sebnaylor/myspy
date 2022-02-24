@@ -52,14 +52,14 @@
       <th>Owner</th>
     </tr>
 
-    <% @bookings.agent_id.user_id.each do |booking| %>
+    <% @bookingseach do |booking| %>
         <tr>
       <td><%=booking.agent.name %></td>
       <td><%=booking.agent.price %></td>
       <td>Total price TBD</td>
       <td><%=booking.start_date%></td>
       <td><%=booking.end_date %></td>
-      <td><%booking.agent.user_id%>
+      <td><%booking.agent.user.id%>
         </tr>
     <% end %>
 
@@ -72,25 +72,6 @@
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
   <%# create list of agents which have been booked here - Oli%>
 
-    <table>
-    <tr>
-      <th>Agent name</th>
-      <th>Price per day</th>
-      <th>Total</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Assignor</th>
-    </tr>
-
-    <% @bookings.each do |booking| %>
-        <tr>
-      <td><%=booking.agent.name %></td>
-      <td><%=booking.agent.price %></td>
-      <td>Total price TBD</td>
-      <td><%=booking.start_date%></td>
-      <td><%=booking.end_date %></td>
-        </tr>
-    <% end %>
 
   <table>
   <tr>
