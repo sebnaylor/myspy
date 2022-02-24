@@ -14,12 +14,31 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <%# create list of owned agents here %>
+  <%# create list of owned agents here%>
   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  <%# create list of booked agents here %>
+  <%# create list of booked agents here%>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-  <%# create list of agents which have been booked here %>
+  <%# create list of agents which have been booked here - Oli%>
+  <table>
+  <tr>
+    <th>Agent name</th>
+    <th>Price per day</th>
+    <th>Total</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Assignor</th>
+  </tr>
+  <tr>
+  <% @bookings.each do |booking| %>
+    <td><%=booking.agent.name %></td>
+    <td><%=booking.agent.price %></td>
+    <td>Total price TBD</td>
+    <td><%=booking.start_date%></td>
+    <td><%=booking.end_date %></td>
+  <% end %>
+  </tr>
+</table>
   </div>
 </div>
