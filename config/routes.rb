@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:index, :destroy]
   resources :users, only: [:show]
-  get "/dashboard/:id", to: 'users#show'
+
+  get "/dashboard/:id", to: 'users#show', as: :dashboard
 end
