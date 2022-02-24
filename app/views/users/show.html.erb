@@ -59,7 +59,7 @@
       <td>Total price TBD</td>
       <td><%=booking.start_date%></td>
       <td><%=booking.end_date %></td>
-      <td><%booking.agent.user_id%>
+      <td><%booking.agent.user.id%>
         </tr>
     <% end %>
 
@@ -71,6 +71,8 @@
 
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
   <%# create list of agents which have been booked here - Oli%>
+
+
   <table>
   <tr>
     <th>Agent name</th>
