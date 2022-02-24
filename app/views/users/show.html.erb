@@ -56,15 +56,17 @@
     <th>End date</th>
     <th>Assignor</th>
   </tr>
-  <tr>
+
   <% @bookings.each do |booking| %>
+      <tr>
     <td><%=booking.agent.name %></td>
     <td><%=booking.agent.price %></td>
     <td>Total price TBD</td>
     <td><%=booking.start_date%></td>
     <td><%=booking.end_date %></td>
+      </tr>
   <% end %>
-  </tr>
+
 </table>
   </div>
 </div>
