@@ -52,7 +52,7 @@
       <th>Owner</th>
     </tr>
 
-    <% @bookingseach do |booking| %>
+    <% @bookings.each do |booking| %>
         <tr>
       <td><%=booking.agent.name %></td>
       <td><%=booking.agent.price %></td>
@@ -83,8 +83,7 @@
     <th>Assignor</th>
     <th>Delete?</th>
   </tr>
-
-  <% @bookings.each do |booking| %>
+  <% @agent_bookings.each do |booking| %>
       <tr>
     <td><%=booking.agent.name %></td>
     <td><%=booking.agent.price %></td>
