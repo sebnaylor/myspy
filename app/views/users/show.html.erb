@@ -1,0 +1,70 @@
+<h1>Bookings page</h1>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Agents</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My assignments</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Agents in the field</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+  <div class="d-flex">
+    <div class="cards">
+      <% @owned_agents.each do |agent| %>
+        <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
+          <div class="card-agent">
+            <% if agent.photo.attached? %>
+              <%= cl_image_tag agent.photo.key, crop: :fill %>
+            <% else %>
+            <%= image_tag "/assets/default_agent.png" %>
+            <% end %>
+            <div class="card-agent-infos">
+              <div>
+                <h2><%= agent.name %></h2>
+                <p><%= agent.category %></p>
+              </div>
+                <h2 class="card-agent-pricing">£<%= agent.price %></h2>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <%# create list of booked agents here%>
+  </div>
+
+
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  <%# create list of agents which have been booked here - Oli%>
+  <table>
+  <tr>
+    <th>Agent name</th>
+    <th>Price per day</th>
+    <th>Total</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Assignor</th>
+  </tr>
+  <tr>
+  <% @bookings.each do |booking| %>
+    <td><%=booking.agent.name %></td>
+    <td><%=booking.agent.price %></td>
+    <td>Total price TBD</td>
+    <td><%=booking.start_date%></td>
+    <td><%=booking.end_date %></td>
+  <% end %>
+  </tr>
+</table>
+  </div>
+</div>

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:index]
+  resources :users, only: [:show]
+  get "/dashboard/:id", to: 'users#show'
 end
