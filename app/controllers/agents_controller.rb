@@ -33,6 +33,10 @@ class AgentsController < ApplicationController
     # returns a boolean based on whether the signed in user owns the agent
     @owner = @agent[:user_id] == current_user.id
     @booking = Booking.new
+
+    # Need to add the correct marker function for the agent here
+
+
   end
 
   def edit
