@@ -21,7 +21,8 @@ class AgentsController < ApplicationController
       {
         lat: agent.latitude,
         lng: agent.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { agent: agent })
+        info_window: render_to_string(partial: "info_window", locals: { agent: agent }),
+        image_url: helpers.asset_url("/assets/search-solid.svg")
       }
     end
   end

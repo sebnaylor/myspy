@@ -11,3 +11,13 @@
   opacity: 0.8;
   color: white;
 }
+
+.btn-small {
+  font-size: 12px;
+  color: white;
+  padding: 4px 5px;
+  border-radius: 50px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  background-color: #DC1262;
+}
