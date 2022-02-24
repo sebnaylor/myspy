@@ -1,0 +1,25 @@
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User ID</th>
+        <th scope="col">Agent ID</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+      </tr>
+    </thead>
+    <% @bookings.each do |booking| %>
+    <tbody>
+      <tr>
+        <th><%= booking.user.email %></th>
+        <td><%= booking.agent.name %></td>
+        <td><%= booking.start_date %></td>
+        <td><%= booking.end_date %></td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "Back to all agents", agents_path %>

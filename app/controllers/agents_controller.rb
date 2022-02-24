@@ -31,6 +31,7 @@ class AgentsController < ApplicationController
     @agent = Agent.find(params[:id])
     # returns a boolean based on whether the signed in user owns the agent
     @owner = @agent[:user_id] == current_user.id
+    @booking = Booking.new
   end
 
   def edit
