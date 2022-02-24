@@ -2,10 +2,12 @@
 <div class="container">
   <h2>Bookings</h2>
   <div>
-    <%= simple_form_for [ @agent, @booking ] do |f| %>
-      <%= f.input :start_date, as: :date, html5: true %>
-      <%= f.input :end_date, as: :date, html5: true %>
-      <%= f.submit "Submit Booking Request", class: "btn btn-primary" %>
+    <%unless @owner%>
+      <%= simple_form_for [ @agent, @booking ] do |f| %>
+        <%= f.input :start_date, as: :date, html5: true %>
+        <%= f.input :end_date, as: :date, html5: true %>
+        <%= f.submit "Submit Booking Request", class: "btn btn-primary" %>
+      <% end %>
     <% end %>
   </div>
 </div>
