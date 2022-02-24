@@ -16,7 +16,7 @@ class AgentsController < ApplicationController
   def index
     @agents = Agent.all
 
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    # the `geocoded` scope filters only agents with coordinates (latitude & longitude)
     @markers = @agents.geocoded.map do |agent|
       {
         lat: agent.latitude,
