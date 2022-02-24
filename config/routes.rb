@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :bookings, only: [:show, :update]
   end
   resources :agents, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-    resources :bookings, only: [:new]
+    resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:create, :index]
+  resources :bookings, only: [:index]
   resources :users, only: [:show]
   get "/dashboard/:id", to: 'users#show', as: :dashboard
 end

@@ -16,12 +16,13 @@ class AgentsController < ApplicationController
   def index
     @agents = Agent.all
 
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    # the `geocoded` scope filters only agents with coordinates (latitude & longitude)
     @markers = @agents.geocoded.map do |agent|
       {
         lat: agent.latitude,
         lng: agent.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { agent: agent })
+        info_window: render_to_string(partial: "info_window", locals: { agent: agent }),
+        image_url: helpers.asset_url("/assets/search-solid.svg")
       }
     end
   end
@@ -31,6 +32,7 @@ class AgentsController < ApplicationController
     @agent = Agent.find(params[:id])
     # returns a boolean based on whether the signed in user owns the agent
     @owner = @agent[:user_id] == current_user.id
+    @booking = Booking.new
   end
 
   def edit
