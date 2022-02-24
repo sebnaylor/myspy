@@ -14,9 +14,9 @@
 <%if @owner%>
   <br>
   <br>
-  <div class = "agent-show-page-container-2c side-padding">
+  <div class = "agent-show-page-container-2c side-padding edit-delete-booking-container">
     <%= link_to edit_agent_path(@agent) do%>
-      <div class = "agent-show-page-container-box-2c edit-button btn-main">
+      <div class = "agent-show-page-container-box-2c edit-button btn-main side-padding">
         <h2>Edit</h2>
       </div>
     <% end %>
@@ -28,7 +28,7 @@
   </div>
     <% else %>
     <%= link_to "/bookings" do%>
-      <div class = "agent-show-page-container-box-2c booking-button btn-main mb-3">
+      <div class = "agent-show-page-container-box-2c booking-button-show btn-main mb-3">
         <h2>Book <%=@agent.name%></h2>
       </div>
     <% end %>
