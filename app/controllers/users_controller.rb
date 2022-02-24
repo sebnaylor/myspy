@@ -7,4 +7,5 @@ class UsersController < ApplicationController
     @owned_agents = Agent.where(user_id: @user)
     @bookings = Booking.where(user_id: @user)
   end
+
 end
