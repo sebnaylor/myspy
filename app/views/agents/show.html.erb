@@ -1,15 +1,75 @@
 
-<div class="container">
-  <h2>Bookings</h2>
-  <div>
-    <%= simple_form_for [ @agent, @booking ] do |f| %>
-      <%= f.input :start_date, as: :date, html5: true %>
-      <%= f.input :end_date, as: :date, html5: true %>
-      <%= f.submit "Submit Booking Request", class: "btn btn-primary" %>
-    <% end %>
+<div class="container d-flex justify-content-between">
+  <div class="lh-side flex-grow-1">
+    <div class="profile pb-3">
+      <span class="h1"><%= @agent.name %></span>
+      <div class="skill-header d-flex">
+        <div class="category">
+          <span class="m-1"><i class="fas fa-user-secret fa-2x "></i></span>
+          <span class=""><%= @agent.category %></span>
+        </div>
+        <div class="skills">
+          <span class="m-2"><i class="fas fa-award fa-2x"></i></span>
+          <span class=""><%= @agent.skills %></span>
+        </div>
+      </div>
+    </div>
+    <%= cl_image_tag @agent.photo.key, crop: :fill, class: 'agent-photo'%>
+    <div class="other-skills">
+      <p class="h3 pm-1"><strong>Agent Organisation: </strong><%= @agent.user.email %></p>
+      <p class="border-bottom h4">Years of active service: <%= @agent.years_of_service %></p>
+      <div class="d-flex align-items-center mt-3">
+        <span class="m-1"><i class="fas fa-cut fa-2x"></i></span>
+        <span><p class="h5"><%= @agent.weapon %></p></span>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="m-1"><i class="fas fa-church fa-2x"></i></span>
+        <span><p class="h5"><%= @agent.marital_status %></p></span>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="m-1"><i class="fas fa-blind fa-2x"></i></span>
+        <span><p class="h5"><%= @agent.ineptitude %></p></span>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="m-1"><i class="fas fa-gopuram fa-2x"></i></span>
+        <span><p class="h5"><%= @agent.evilness %></p></span>
+      </div>
+      <div class="d-flex align-items-center border-bottom mb-3">
+        <span class="m-1"><i class="fas fa-pen-alt fa-2x"></i></span>
+        <span><p class="h5">Gadget: <%= @agent.gadgets %></p></span>
+      </div>
+    </div>
+    <h3 class="mt-2">Your agent's location:</h3>
+    <div class="map my-3" style="width: 100%; height: 500px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
+  <div class="rh-side pt-2 m-2">
+    <div class="booking-form shadow-sm">
+      <div class="form">
+        <div class="d-flex align-items-center">
+          <p class="h2">£<%= @agent.price %></p>
+          <p>/ day</p>
+        </div>
+        <%= simple_form_for [ @agent, @booking ] do |f| %>
+          <%= f.input :start_date, as: :date, html5: true %>
+          <%= f.input :end_date, as: :date, html5: true %>
+          <div class="d-flex justify-content-center">
+          <%= f.submit "Reserve", class: "btn-main" %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
 </div>
 
+
+
+
+
+<!--
 <div class = "container">
 <div class = "agent-title"><h1><%=@agent.name%></h1>
 <p><%= @agent.category %></p>
@@ -65,3 +125,4 @@
   <div class = "agent-show-page-container-box-3c"><h2>Gadgets<br> <%= @agent.gadgets %></h2></div>
 </div>
 </div>
+-->
