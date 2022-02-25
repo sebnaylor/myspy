@@ -13,9 +13,11 @@
         </div>
       </div>
     </div>
-    <%= cl_image_tag @agent.photo.key, crop: :fill, class: 'agent-photo w-100'%>
-
-
+    <% if @agent.photo.attached? %>
+      <%= cl_image_tag @agent.photo.key, crop: :fill, class: 'agent-photo w-100'%>
+    <% else %>
+      <%= image_tag "/assets/default_agent.png" %>
+    <% end %>
 
   </div>
   <div class="other-skills">
