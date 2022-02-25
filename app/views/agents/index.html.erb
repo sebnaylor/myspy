@@ -14,10 +14,10 @@
     </div>
   </div>
 </div>
-  <% if params[:query].present?%>
-    <h2 class="mt-4" style="text-align: center;">No</h2>
+    <% if @agents.present?%>
+    <h2 class="mt-4" style="text-align: center;">All Available Agents</h2>
     <% else %>
-    <h2 class="mt-4" style="text-align: center;">Agents</h2>
+    <h2 class="mt-4" style="text-align: center;"> ERROR 420: Unfortunatley no agents found, give it another search ya muffin</h2>
     <% end %>
   <br>
   <br>
