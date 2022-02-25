@@ -15,7 +15,7 @@ class AgentsController < ApplicationController
 
   def index
     if params[:query].present?
-      @agents = Agent.where("name LIKE ?", "%#{params[:query]}%").or(Agent.where("category LIKE ?", "%#{params[:query]}%")).or(Agent.where("location LIKE ?", "%#{params[:query]}%"))
+      @agents = Agent.where("name ILIKE ?", "%#{params[:query]}%").or(Agent.where("category ILIKE ?", "%#{params[:query]}%")).or(Agent.where("location ILIKE ?", "%#{params[:query]}%"))
     else
       @agents = Agent.all
     end
