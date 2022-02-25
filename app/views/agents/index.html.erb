@@ -14,8 +14,11 @@
     </div>
   </div>
 </div>
-
-  <h2 class="mt-4">All available agents</h2>
+  <% if params[:query].present?%>
+    <h2 class="mt-4" style="text-align: center;">No</h2>
+    <% else %>
+    <h2 class="mt-4" style="text-align: center;">Agents</h2>
+    <% end %>
   <br>
   <br>
   <%= button_to "Create New Agent", new_agent_path, :method => "get", class: "btn btn-main" %>

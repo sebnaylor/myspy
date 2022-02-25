@@ -14,14 +14,12 @@ class AgentsController < ApplicationController
   end
 
   def index
-  # raise
     if params[:query].present?
       @agents = Agent.where("name LIKE ?", "%#{params[:query]}%").or(Agent.where("category LIKE ?", "%#{params[:query]}%")).or(Agent.where("location LIKE ?", "%#{params[:query]}%"))
     else
       @agents = Agent.all
     end
-    # @agents = Agent.all
-    # the `geocoded` scope filters only agents with coordinates (latitude & longitude)
+
     @markers = @agents.geocoded.map do |agent|
       {
         lat: agent.latitude,
