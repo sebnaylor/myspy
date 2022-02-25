@@ -65,7 +65,7 @@
           <div class="agent-owner-actions d-flex flex-column">
             <span class="mb-3">You employ this agent</span>
             <div class="actions mb-3">
-            <%= link_to agent_path(@agent), method: :delete,  data: { confirm: "Our agent killer will be dispatched, are you sure?" } do%>
+            <%= link_to agent_path(@agent), method: :delete, class: "text-decoration-none", data: { confirm: "Our agent killer will be dispatched, are you sure?" } do%>
               <div class="btn btn-dangerous m-2">
                 <p>Terminate Agent</p>
               </div>
