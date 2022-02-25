@@ -14,9 +14,12 @@ class AgentsController < ApplicationController
   end
 
   def index
-    @agents = Agent.all
+    if params[:query].present?
+      @agents = Agent.where("name LIKE ?", "%#{params[:query]}%").or(Agent.where("category LIKE ?", "%#{params[:query]}%")).or(Agent.where("location LIKE ?", "%#{params[:query]}%"))
+    else
+      @agents = Agent.all
+    end
 
-    # the `geocoded` scope filters only agents with coordinates (latitude & longitude)
     @markers = @agents.geocoded.map do |agent|
       {
         lat: agent.latitude,
@@ -34,7 +37,16 @@ class AgentsController < ApplicationController
     @owner = @agent[:user_id] == current_user.id
     @agent_owner = @agent.user
     @booking = Booking.new
-    # Need to add the correct marker function for the agent here
+    agents = Agent.all.geocoded.map do |agent|
+      {
+        lat: agent.latitude,
+        lng: agent.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { agent: agent }),
+        image_url: helpers.asset_url("/assets/search-solid.svg"),
+        id: agent.id
+      }
+    end
+    @marker = agents.select { |agent| agent[:id] == @agent.id }
   end
 
   def edit
@@ -56,6 +68,7 @@ class AgentsController < ApplicationController
     @owner = @agent.user
     redirect_to dashboard_path(@owner)
   end
+
   private
 
   def agent_params
