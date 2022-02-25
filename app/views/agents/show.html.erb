@@ -19,7 +19,7 @@
 
   </div>
   <div class="other-skills">
-    <p class="h3 pm-3 pt-2"><strong>Agent Organisation: </strong><%= @agent.user.email %></p>
+    <p class="h3 pm-3 pt-2"><strong>Agent Organisation: </strong><%= @agent.user.name %></p>
     <p class="border-bottom h4">Years of active service: <%= @agent.years_of_service %></p>
     <div class="d-flex align-items-center mt-3">
       <span class="m-1"><i class="fas fa-cut fa-2x"></i></span>
@@ -64,12 +64,12 @@
             <span class="mb-3">You employ this agent</span>
             <div class="actions mb-3">
             <%= link_to agent_path(@agent), method: :delete,  data: { confirm: "Our agent killer will be dispatched, are you sure?" } do%>
-              <div class="btn btn-dangerous">
+              <div class="btn btn-dangerous m-2">
                 <p>Terminate Agent</p>
               </div>
             <% end %>
             <%= link_to edit_agent_path(@agent) do%>
-              <div class = "btn btn-main">
+              <div class = "btn btn-main m-2">
                 <p>Edit Agent<p>
               </div>
           <% end %>
