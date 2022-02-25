@@ -56,9 +56,9 @@
 
     <% @bookings.each do |booking| %>
         <tr>
-      <td><%=booking.agent.name %></td>
-      <td><%=booking.agent.price %></td>
-      <td>Total price TBD</td>
+      <td><%=link_to booking.agent.name, agent_path(booking.agent) %></td>
+      <td>£<%=booking.agent.price %></td>
+      <td>£<%=(booking.start_date..booking.end_date).count * booking.agent.price%></td>
       <td><%=booking.start_date%></td>
       <td><%=booking.end_date %></td>
       <td><%=booking.agent.user.name%>
@@ -84,20 +84,24 @@
     <th>Start date</th>
     <th>End date</th>
     <th>Assignor</th>
-    <th>Delete?</th>
+    <th></th>
   </tr>
   <% end %>
   <% @agent_bookings.each do |booking| %>
       <tr>
-    <td><%=booking.agent.name %></td>
-    <td><%=booking.agent.price %></td>
-    <td>Total price TBD</td>
+    <td><%= link_to booking.agent.name, agent_path(booking.agent)%></td>
+    <td>£<%=booking.agent.price %></td>
+
+    <td>£<%=(booking.start_date..booking.end_date).count * booking.agent.price%></td>
     <td><%=booking.start_date%></td>
     <td><%=booking.end_date %> </td>
     <td><%=booking.user.name %> </td>
-    <td><%=link_to "delete", booking_path(booking),method: :delete, data: { confirm: "Would you like to delete the dossier?" }%> </td>
+    <td><%=link_to booking_path(booking),method: :delete, data: { confirm: "Would you like to delete the dossier?" } do%>
+    <div class="btn btn-dangerous">Terminate Booking</div></td>
+        <% end %>
       </tr>
-  <% end %>
+      <%end %>
+
 
     </table>
   </div>
