@@ -40,8 +40,16 @@ class AgentsController < ApplicationController
     @booking = Booking.new
 
     # Need to add the correct marker function for the agent here
-
-
+    agents = Agent.all.geocoded.map do |agent|
+      {
+        lat: agent.latitude,
+        lng: agent.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { agent: agent }),
+        image_url: helpers.asset_url("/assets/search-solid.svg"),
+        id: agent.id
+      }
+    end
+    @marker = agents.select { |agent| agent[:id] == @agent.id }
   end
 
   def edit
