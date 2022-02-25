@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-between">
-  <div class="lh-side flex-grow-1">
+  <div class="lh-side">
     <div class="profile pb-3">
       <span class="h1"><%= @agent.name %></span>
       <div class="skill-header d-flex">
@@ -13,39 +13,37 @@
         </div>
       </div>
     </div>
-    <%= cl_image_tag @agent.photo.key, crop: :fill, class: 'agent-photo'%>
-    <div class="other-skills">
-      <p class="h3 pm-1"><strong>Agent Organisation: </strong><%= @agent.user.email %></p>
-      <p class="border-bottom h4">Years of active service: <%= @agent.years_of_service %></p>
-      <div class="d-flex align-items-center mt-3">
-        <span class="m-1"><i class="fas fa-cut fa-2x"></i></span>
-        <span><p class="h5"><%= @agent.weapon %></p></span>
-      </div>
-      <div class="d-flex align-items-center">
-        <span class="m-1"><i class="fas fa-church fa-2x"></i></span>
-        <span><p class="h5"><%= @agent.marital_status %></p></span>
-      </div>
-      <div class="d-flex align-items-center">
-        <span class="m-1"><i class="fas fa-blind fa-2x"></i></span>
-        <span><p class="h5"><%= @agent.ineptitude %></p></span>
-      </div>
-      <div class="d-flex align-items-center">
-        <span class="m-1"><i class="fas fa-gopuram fa-2x"></i></span>
-        <span><p class="h5"><%= @agent.evilness %></p></span>
-      </div>
-      <div class="d-flex align-items-center border-bottom mb-3">
-        <span class="m-1"><i class="fas fa-pen-alt fa-2x"></i></span>
-        <span><p class="h5">Gadget: <%= @agent.gadgets %></p></span>
-      </div>
-    </div>
-    <h3 class="mt-2">Your agent's location:</h3>
-    <div class="map my-3" style="width: 100%; height: 500px;"
-      data-controller="mapbox"
-      data-mapbox-markers-value="<%= @markers.to_json %>"
-      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+    <%= cl_image_tag @agent.photo.key, crop: :fill, class: 'agent-photo w-100'%>
+
+
 
   </div>
+  <div class="other-skills">
+    <p class="h3 pm-3 pt-2"><strong>Agent Organisation: </strong><%= @agent.user.email %></p>
+    <p class="border-bottom h4">Years of active service: <%= @agent.years_of_service %></p>
+    <div class="d-flex align-items-center mt-3">
+      <span class="m-1"><i class="fas fa-cut fa-2x"></i></span>
+      <span><p class="h5"><%= @agent.weapon %></p></span>
+    </div>
+    <div class="d-flex align-items-center">
+      <span class="m-1"><i class="fas fa-church fa-2x"></i></span>
+      <span><p class="h5"><%= @agent.marital_status %></p></span>
+    </div>
+    <div class="d-flex align-items-center">
+      <span class="m-1"><i class="fas fa-blind fa-2x"></i></span>
+      <span><p class="h5"><%= @agent.ineptitude %></p></span>
+    </div>
+    <div class="d-flex align-items-center">
+      <span class="m-1"><i class="fas fa-gopuram fa-2x"></i></span>
+      <span><p class="h5"><%= @agent.evilness %></p></span>
+    </div>
+    <div class="d-flex align-items-center border-bottom mb-3">
+      <span class="m-1"><i class="fas fa-pen-alt fa-2x"></i></span>
+      <span><p class="h5">Gadget: <%= @agent.gadgets %></p></span>
+    </div>
+  </div>
+  <%# Code goes here  %>
+
   <div class="rh-side pt-2 m-2">
     <div class="booking-form shadow-sm">
       <div class="form">
@@ -53,7 +51,7 @@
           <p class="h2">£<%= @agent.price %></p>
           <p>/ day</p>
         </div>
-        <%unless @owner%>
+        <%if !@owner%>
           <%= simple_form_for [ @agent, @booking ] do |f| %>
            <%= f.input :start_date, as: :date, html5: true %>
             <%= f.input :end_date, as: :date, html5: true %>
@@ -61,8 +59,33 @@
               <%= f.submit "Reserve", class: "btn-main" %>
             </div>
           <% end %>
-         <% end %>       
+        <% else %>
+          <div class="agent-owner-actions d-flex flex-column">
+            <span class="mb-3">You employ this agent</span>
+            <div class="actions mb-3">
+            <%= link_to agent_path(@agent), method: :delete,  data: { confirm: "Our agent killer will be dispatched, are you sure?" } do%>
+              <div class="btn btn-dangerous">
+                <p>Terminate Agent</p>
+              </div>
+            <% end %>
+            <%= link_to edit_agent_path(@agent) do%>
+              <div class = "btn btn-main">
+                <p>Edit Agent<p>
+              </div>
+          <% end %>
+        <% end %>
+        </div>
+        </div>
         </div>
       </div>
     </div>
+
+</div>
+<div class="container">
+  <h3 class="mt-2">Your agent's location:</h3>
+  <div class="map my-3" style="width: 75%; height: 500px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>

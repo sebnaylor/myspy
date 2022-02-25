@@ -32,11 +32,9 @@ class AgentsController < ApplicationController
     @agent = Agent.find(params[:id])
     # returns a boolean based on whether the signed in user owns the agent
     @owner = @agent[:user_id] == current_user.id
+    @agent_owner = @agent.user
     @booking = Booking.new
-
     # Need to add the correct marker function for the agent here
-
-
   end
 
   def edit
@@ -55,7 +53,8 @@ class AgentsController < ApplicationController
   def destroy
     @agent = Agent.find(params[:id])
     @agent.destroy
-    redirect_to agents_path
+    @owner = @agent.user
+    redirect_to dashboard_path(@owner)
   end
   private
 
