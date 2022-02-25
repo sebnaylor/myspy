@@ -8,7 +8,7 @@
   <div class="d-flex flex-wrap justify-content-between pt-4">
     <% @agents.each do |agent| %>
         <%= link_to agent_path(agent), class: "text-decoration-none text-dark" do %>
-          <div class="card-agent">
+          <div class="card-agent-home">
           <% if agent.photo.attached? %>
             <%= cl_image_tag agent.photo.key %>
           <% else %>
