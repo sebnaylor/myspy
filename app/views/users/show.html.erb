@@ -1,7 +1,7 @@
 <h1 style= "text-align:center">Dashboard</h1>
 
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Agents</button>
   </li>
@@ -43,7 +43,7 @@
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
   <%# create list of booked agents here%>
   <%unless @bookings == []%>
-  <table>
+  <table class="table table-background">
     <tr>
       <th>Agent name</th>
       <th>Price per day</th>
@@ -75,7 +75,7 @@
   <%# create list of agents which have been booked here - Oli%>
 
 
-  <table>
+  <table class ="table table-background">
   <%unless @agent_bookings == []%>
   <tr>
     <th>Agent name</th>
