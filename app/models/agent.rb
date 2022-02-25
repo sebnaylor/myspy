@@ -1,5 +1,7 @@
 class Agent < ApplicationRecord
+
   has_many :bookings, dependent: :destroy
+
   belongs_to :user
 
   geocoded_by :location
