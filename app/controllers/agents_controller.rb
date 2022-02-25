@@ -14,14 +14,12 @@ class AgentsController < ApplicationController
   end
 
   def index
-  # raise
     if params[:query].present?
       @agents = Agent.where("name LIKE ?", "%#{params[:query]}%").or(Agent.where("category LIKE ?", "%#{params[:query]}%")).or(Agent.where("location LIKE ?", "%#{params[:query]}%"))
     else
       @agents = Agent.all
     end
-    # @agents = Agent.all
-    # the `geocoded` scope filters only agents with coordinates (latitude & longitude)
+
     @markers = @agents.geocoded.map do |agent|
       {
         lat: agent.latitude,
@@ -37,9 +35,8 @@ class AgentsController < ApplicationController
     @agent = Agent.find(params[:id])
     # returns a boolean based on whether the signed in user owns the agent
     @owner = @agent[:user_id] == current_user.id
+    @agent_owner = @agent.user
     @booking = Booking.new
-
-    # Need to add the correct marker function for the agent here
     agents = Agent.all.geocoded.map do |agent|
       {
         lat: agent.latitude,
@@ -68,7 +65,8 @@ class AgentsController < ApplicationController
   def destroy
     @agent = Agent.find(params[:id])
     @agent.destroy
-    redirect_to agents_path
+    @owner = @agent.user
+    redirect_to dashboard_path(@owner)
   end
 
   private

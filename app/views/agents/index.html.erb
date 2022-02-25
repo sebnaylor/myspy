@@ -14,8 +14,12 @@
     </div>
   </div>
 </div>
-
-  <h2 class="mt-4">All available agents</h2>
+    <% if @agents.present?%>
+    <h2 class="mt-4" style="text-align: center;">All Available Agents</h2>
+    <% else %>
+    <h2 class="mt-4" style="text-align: center;"> CLASSIFIED AGENT ERROR 420:</h2>
+    <h2 class="mt-4" style="text-align: center;">Unfortunatley no agents found 🕵️, give it another search ya beefcake</h2>
+    <% end %>
   <br>
   <br>
   <%= button_to "Create New Agent", new_agent_path, :method => "get", class: "btn btn-main" %>
