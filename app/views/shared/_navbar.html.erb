@@ -1,11 +1,11 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
       <div class="logo-and-name d-flex justify-content-between">
       <%= link_to root_path do %>
       <%= image_tag "/assets/logo.png", class: "logo"%>
       <%end%>
-      <%= link_to root_path do%>
-      <h2 style="color: black;">MySpy</h2>
+      <%= link_to root_path, class: "text-decoration-none" do%>
+        <h2 style="color: black;">MySpy</h2>
       <%end%>
       </div>
 
